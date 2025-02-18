@@ -164,6 +164,6 @@ A disciplina fornecerá uma **base sólida** de Programação Orientada a Objeto
 
 PROVAS
 
-22/04
-27/05
-17/06
+- 22/04 AVALIAÇÃO 01
+- 27/05 AVALIAÇÃO 02
+- 17/06 AVALIAÇÃO 03
