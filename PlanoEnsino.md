@@ -16,7 +16,7 @@ Aqui está um detalhamento mais abrangente do **Plano de Ensino** da disciplina 
 A disciplina aborda os fundamentos da **Programação Orientada a Objetos (POO)**, incluindo:
 - Conceitos de **orientação a objetos**
 - **Sintaxe** das linguagens orientadas a objetos (Java como linguagem principal)
-- Desenvolvimento de **programas utilizando POO**
+- Desenvolvimento de **programas utilizando POO**   
 - **Reutilização de código** através de conceitos como **herança e polimorfismo**
 
 ---
@@ -162,4 +162,8 @@ A disciplina fornecerá uma **base sólida** de Programação Orientada a Objeto
 ✅ Aplicação de **boas práticas de POO**  
 ✅ Desenvolvimento de **trabalho final aplicado**  
 
-Caso precise de mais detalhes sobre algum conteúdo específico, me avise! 😊
+PROVAS
+
+22/04
+27/05
+17/06
