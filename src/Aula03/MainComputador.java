@@ -1,3 +1,5 @@
+package Aula03;
+
 import java.util.Scanner;
 // Classe executável para Computador
 class MainComputador {
