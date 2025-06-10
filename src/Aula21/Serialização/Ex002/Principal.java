@@ -27,7 +27,7 @@ public class Principal {
     }
 
     public static void gravaArquivo(String jsonString) {
-        try (FileWriter fileWriter = new FileWriter("pessoa.json")) {
+        try (FileWriter fileWriter = new FileWriter("C:\\Users\\roger\\IdeaProjects\\ProgramaoOrientadaObjetos\\src\\Aula21\\Serialização\\Ex002\\pessoa.json")) {
             fileWriter.write(jsonString);
             System.out.println("Arquivo pessoa.json salvo com sucesso.");
         } catch (IOException e) {
@@ -35,9 +35,10 @@ public class Principal {
         }
     }
 
+
     public static void lerArquivo() throws org.json.simple.parser.ParseException {
         // Lendo o arquivo e desserializando o JSON para objeto
-        try (FileReader fileReader = new FileReader("pessoa.json")) {
+        try (FileReader fileReader = new FileReader("C:\\Users\\roger\\IdeaProjects\\ProgramaoOrientadaObjetos\\src\\Aula21\\Serialização\\Ex002\\pessoa.json")) {
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(fileReader);
 
@@ -52,3 +53,4 @@ public class Principal {
         }
     }
 }
+// ate aqui tudo certo
