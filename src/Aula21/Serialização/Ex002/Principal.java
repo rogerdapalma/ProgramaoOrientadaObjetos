@@ -27,7 +27,7 @@ public class Principal {
     }
 
     public static void gravaArquivo(String jsonString) {
-        try (FileWriter fileWriter = new FileWriter("C:\\Users\\roger\\IdeaProjects\\ProgramaoOrientadaObjetos\\src\\Aula21\\Serialização\\Ex002\\pessoa.json")) {
+        try (FileWriter fileWriter = new FileWriter("C:\\Users\\roger\\IdeaProjects\\ProgramaoOrientadaObjetos\\src\\Aula21\\Serialização\\Ex002\\pessoa.json" )) {
             fileWriter.write(jsonString);
             System.out.println("Arquivo pessoa.json salvo com sucesso.");
         } catch (IOException e) {

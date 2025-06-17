@@ -18,7 +18,7 @@ public class LeituraPrincipal {
                 int idade = Integer.parseInt(campos[1]);
 
                 Aluno a = new Aluno(nome, idade);
-                System.out.println("nome: " + a.getNome() + "\nidade: " + a.getIdade());
+                System.out.println("Nome: " + a.getNome() + "\nIdade: " + a.getIdade());
             }
             leitor.close();
             arquivo.close();
