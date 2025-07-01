@@ -1,4 +1,4 @@
-package pratica;
+package pratica.ex001;
 
 abstract class Produto {
     private String nome;

@@ -1,4 +1,4 @@
-package pratica;
+package pratica.ex001;
 
 public class ProdutoAlimenticio extends Produto implements Descontavel{
 

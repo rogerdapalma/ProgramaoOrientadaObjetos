@@ -1,4 +1,4 @@
-package pratica;
+package pratica.ex001;
 
 public class ProdutoEletronico extends Produto implements Descontavel{
     public ProdutoEletronico(String nome, double preco) throws PrecoInvalidoException {

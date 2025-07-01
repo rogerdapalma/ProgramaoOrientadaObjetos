@@ -1,6 +1,4 @@
-package pratica;
-
-import java.sql.SQLOutput;
+package pratica.ex001;
 
 public class Loja {
     public static void main(String[] args) {
