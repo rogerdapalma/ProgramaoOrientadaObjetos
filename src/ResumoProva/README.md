@@ -1,206 +1,170 @@
-# 🧠 Revisão Java: Programação Orientada a Objetos
 
+# Resumo para Prova – Java & POO
 
 ---
 
-## 📌 Classe `Pessoa`
+## Fundamentos de POO
+
+* **Classe:** Molde que define atributos e métodos.
+  Ex: `class Carro { String modelo; void ligar() { ... } }`
+
+* **Objeto:** Instância da classe.
+  Ex: `Carro meuCarro = new Carro();`
+
+* **Atributos:** Variáveis da classe (estado).
+
+* **Métodos:** Funções da classe (comportamento).
+
+* **Encapsulamento:**
+
+    * Protege dados com `private`, acessados por `get` e `set`.
+    * Ex:
+
+      ```java
+      private String nome;
+      public String getNome() { return nome; }
+      public void setNome(String nome) { this.nome = nome; }
+      ```
+
+---
+
+## Herança
+
+* Uma classe herda outra com `extends`.
+
+* Ex:
+
+  ```java
+  class Animal { void emitirSom() { ... } }
+  class Cachorro extends Animal { void emitirSom() { System.out.println("Latindo"); } }
+  ```
+
+* `super` chama construtor ou métodos da superclasse.
+
+---
+
+## Polimorfismo
+
+* **Sobrescrita (Override):** mesmo método em classes diferentes, comportamentos diferentes.
+* **Sobrecarga (Overload):** mesmo nome, parâmetros diferentes.
+
+Ex:
 
 ```java
-class Pessoa {
-    protected String nome;
-
-    // Construtor
-    public Pessoa(String nome) {
-        this.nome = nome;
-    }
-
-    // Método que pode ser sobrescrito por subclasses
-    public void trabalhar() {
-        System.out.println("A pessoa está trabalhando.");
-    }
-}
+void som() { ... }
+void som(String tipo) { ... }
 ```
 
 ---
 
-## 👨‍💼 Classe `Funcionario` (Herança de Pessoa)
+## Classes Abstratas & Interfaces
+
+* **Abstrata:**
+
+    * Não pode instanciar, usa `abstract`.
+    * Pode ter métodos implementados e abstratos.
+
+  ```java
+  abstract class Animal {
+    abstract void emitirSom();
+  }
+  ```
+
+* **Interface:**
+
+    * Somente contratos (métodos sem corpo), implementa com `implements`.
+    * Pode ter constantes (`public static final`).
+
+  ```java
+  interface Animal {
+    void emitirSom();
+  }
+  ```
+
+---
+
+## Listas (ArrayList)
+
+* Armazenam coleções dinâmicas.
 
 ```java
-class Funcionario extends Pessoa {
-    public Funcionario(String nome) {
-        super(nome); // chama o construtor da superclasse
-    }
+List<String> nomes = new ArrayList<>();
+nomes.add("João");
+System.out.println(nomes.get(0));
+```
 
-    @Override
-    public void trabalhar() {
-        System.out.println("O funcionário está trabalhando.");
-    }
-}
+* Métodos importantes: `add`, `remove`, `get`, `size`.
+
+---
+
+## Arquivos
+
+* Para escrever:
+
+```java
+FileWriter fw = new FileWriter("arquivo.txt");
+BufferedWriter bw = new BufferedWriter(fw);
+bw.write("Hello");
+bw.close();
+```
+
+* Para ler:
+
+```java
+FileReader fr = new FileReader("arquivo.txt");
+BufferedReader br = new BufferedReader(fr);
+String linha = br.readLine();
+br.close();
 ```
 
 ---
 
-## 🐾 Classe `Animal`
+## Serialização
+
+* Transformar objeto em bytes para salvar ou enviar (ou JSON/XML).
 
 ```java
-class Animal {
-    protected String nome;
-    protected int idade;
-    protected String som;
+ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("dados.ser"));
+out.writeObject(objeto);
+out.close();
+```
 
-    public Animal(String nome, int idade, String som) {
-        this.nome = nome;
-        this.idade = idade;
-        this.som = som;
-    }
-}
+* E para ler:
+
+```java
+ObjectInputStream in = new ObjectInputStream(new FileInputStream("dados.ser"));
+Objeto obj = (Objeto) in.readObject();
+in.close();
 ```
 
 ---
 
-## 🐶 Classe `Cachorro` (Herança de Animal)
+## Tratamento & Criação de Exceções
+
+* Usar `try-catch` para evitar que programa pare.
 
 ```java
-class Cachorro extends Animal {
-    private String raca;
-
-    public Cachorro(String nome, int idade, String som, String raca) {
-        super(nome, idade, som);
-        this.raca = raca;
-    }
-
-    public void latir() {
-        System.out.println("O cachorro faz: " + som);
-    }
+try {
+  int x = 10 / 0;
+} catch (ArithmeticException e) {
+  System.out.println("Erro: " + e.getMessage());
 }
 ```
 
----
-
-## 🎓 Classe `Aluno` (Encapsulamento)
+* Criar exceção personalizada:
 
 ```java
-class Aluno {
-    private String nome;
-    private double nota1;
-    private double nota2;
-
-    // Getters e Setters
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public double getNota1() { return nota1; }
-    public void setNota1(double nota1) { this.nota1 = nota1; }
-
-    public double getNota2() { return nota2; }
-    public void setNota2(double nota2) { this.nota2 = nota2; }
-
-    // Método para calcular a média
-    public double calculaMedia() {
-        return (nota1 + nota2) / 2;
-    }
+class MinhaExcecao extends Exception {
+  public MinhaExcecao(String msg) { super(msg); }
 }
 ```
 
----
-
-## 🟪 Classe `Figura`
-
-```java
-class Figura {
-    protected String cor;
-    protected boolean preenchido;
-
-    public Figura(String cor, boolean preenchido) {
-        this.cor = cor;
-        this.preenchido = preenchido;
-    }
-}
-```
+* Lançar exceção: `throw new MinhaExcecao("Mensagem");`
 
 ---
 
-## 📐 Classe `Retangulo` (Herança de Figura)
+* Sempre use `get`/`set` para atributos `private`.
+* Use polimorfismo para tornar o código flexível (ex: `Animal a = new Cachorro();`).
+* Em listas, percorra com `for-each`.
+* Para exceções, capture a mais específica primeiro.
 
-```java
-class Retangulo extends Figura {
-    private double largura;
-    private double altura;
-
-    public Retangulo(String cor, boolean preenchido, double largura, double altura) {
-        super(cor, preenchido);
-        this.largura = largura;
-        this.altura = altura;
-    }
-
-    public double calcularArea() {
-        return largura * altura;
-    }
-}
-```
-
----
-
-## ⚠️ Classe `ExemploExcecao` (Tratamento de Erros)
-
-```java
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-class ExemploExcecao {
-    public static void executar() {
-        Scanner sc = new Scanner(System.in);
-
-        try {
-            System.out.print("Digite um número inteiro: ");
-            int numero = sc.nextInt();
-
-            if (numero < 0) {
-                throw new ArithmeticException("Número negativo não pode ter raiz real.");
-            }
-
-            System.out.println("Raiz quadrada: " + Math.sqrt(numero));
-        } catch (InputMismatchException e) {
-            System.out.println("Erro: valor digitado não é um número inteiro.");
-        } catch (ArithmeticException e) {
-            System.out.println("Erro matemático: " + e.getMessage());
-        } finally {
-            sc.close();
-        }
-    }
-}
-```
-
----
-
-## 🏁 Classe `RevisaoPOO` (Principal)
-
-```java
-public class RevisaoPOO {
-    public static void main(String[] args) {
-        // Herança com sobrescrita
-        Funcionario f = new Funcionario("João");
-        f.trabalhar();
-
-        // Herança com atributos adicionais
-        Cachorro dog = new Cachorro("Rex", 3, "Au au!", "Labrador");
-        dog.latir();
-
-        // Encapsulamento com get/set
-        Aluno aluno = new Aluno();
-        aluno.setNome("Maria");
-        aluno.setNota1(8.5);
-        aluno.setNota2(7.0);
-        System.out.println("Média da aluna " + aluno.getNome() + ": " + aluno.calculaMedia());
-
-        // Polimorfismo com herança
-        Retangulo r = new Retangulo("Azul", true, 5, 10);
-        System.out.println("Área do retângulo: " + r.calcularArea());
-
-        // Tratamento de exceções
-        ExemploExcecao.executar();
-    }
-}
-```
-
----
